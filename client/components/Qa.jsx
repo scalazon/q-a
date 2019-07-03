@@ -5,8 +5,8 @@ export default class Qa extends React.Component {
     super(props);
 
     this.state = {
-      satisfied: 'I love this product!!',
-      unhappy: 'Arrived late and damaged :('
+      satisfied: 'Can I use it on multiple daddies?',
+      unhappy: 'Can I speak to your manager?'
     };
   }
 
@@ -14,15 +14,15 @@ export default class Qa extends React.Component {
     return (
       <div>
         <div>
-          <h3><strong>JenSpring50214</strong> "{this.state.satisfied}"</h3>
+          <h3><strong>1337DadRider</strong> "{this.state.satisfied}"</h3>
           <p>
-            My new camera is awesome! I just went on a trip to the Bahamas and I got so many amazing photos due to the zero vibration calibration system! WOW so easy to use, just point and click! I feel like I could be the next Ansel Adams with how nice the photos come out.
+            I have two dads and I'm unsure if I'll need a saddle for each, or if I can harness them both with a single saddle?
           </p>
           <span>Verified Buyer 2010</span>
         </div>
         <div>
-          <h3><strong>SpaceCadetHero421</strong> "{this.state.unhappy}"</h3>
-          <p>I bought this item from yourphotogrpahywarehouse hoping to replace my old starter DSLR. I was extremely dissapointed when it arrived with the lens cracked in half due to poor packaging. I would not purchase from yourphotographywarehouse ever again.</p>
+          <h3><strong>Karen</strong> "{this.state.unhappy}"</h3>
+          <p>Do you even care about your customers? Wow, I bought this saddle for my 3 month old baby and he fell right out. What kind of company puts out such a negligent product with no safety testing? #mad #unblessed</p>
           <span>Verified Buyer 2011</span>
         </div>
       </div>

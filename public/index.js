@@ -464,8 +464,8 @@ var Qa = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Qa.__proto__ || Object.getPrototypeOf(Qa)).call(this, props));
 
     _this.state = {
-      satisfied: 'I love this product!!',
-      unhappy: 'Arrived late and damaged :('
+      satisfied: 'Can I use it on multiple daddies?',
+      unhappy: 'Can I speak to your manager?'
     };
     return _this;
   }
@@ -485,7 +485,7 @@ var Qa = function (_React$Component) {
             _react2.default.createElement(
               'strong',
               null,
-              'JenSpring50214'
+              '1337DadRider'
             ),
             ' "',
             this.state.satisfied,
@@ -494,7 +494,7 @@ var Qa = function (_React$Component) {
           _react2.default.createElement(
             'p',
             null,
-            'My new camera is awesome! I just went on a trip to the Bahamas and I got so many amazing photos due to the zero vibration calibration system! WOW so easy to use, just point and click! I feel like I could be the next Ansel Adams with how nice the photos come out.'
+            'I have two dads and I\'m unsure if I\'ll need a saddle for each, or if I can harness them both with a single saddle?'
           ),
           _react2.default.createElement(
             'span',
@@ -511,7 +511,7 @@ var Qa = function (_React$Component) {
             _react2.default.createElement(
               'strong',
               null,
-              'SpaceCadetHero421'
+              'Karen'
             ),
             ' "',
             this.state.unhappy,
@@ -520,7 +520,7 @@ var Qa = function (_React$Component) {
           _react2.default.createElement(
             'p',
             null,
-            'I bought this item from yourphotogrpahywarehouse hoping to replace my old starter DSLR. I was extremely dissapointed when it arrived with the lens cracked in half due to poor packaging. I would not purchase from yourphotographywarehouse ever again.'
+            'Do you even care about your customers? Wow, I bought this saddle for my 3 month old baby and he fell right out. What kind of company puts out such a negligent product with no safety testing? #mad #unblessed'
           ),
           _react2.default.createElement(
             'span',
