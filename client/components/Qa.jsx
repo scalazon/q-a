@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default class Reviews extends React.Component {
-  constructor() {
-    super();
+export default class Qa extends React.Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
       satisfied: 'I love this product!!',

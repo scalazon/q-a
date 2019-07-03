@@ -1,3 +1,7 @@
-import Reviews from './components/reviews.jsx';
+import Qa from './components/Qa.jsx';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-window.Reviews = Reviews;
+
+ReactDOM.render(<Qa />, document.getElementById('qa'));
+
