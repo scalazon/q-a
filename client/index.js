@@ -3,5 +3,5 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-ReactDOM.render(<Qa />, document.getElementById('qa'));
+ReactDOM.render(<Qa />, document.getElementById('q-a'));
 
