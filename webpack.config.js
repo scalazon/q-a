@@ -2,8 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-  mode: "development",
-  context: __dirname + '/client',
+  mode: 'development',
+  context: `${__dirname}/client`,
   entry: './index.js',
   watch: true,
   module: {
@@ -14,12 +14,12 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: ['@babel/preset-react', '@babel/preset-env']
-        },
-      },
-    ],
+        }
+      }
+    ]
   },
   output: {
-    path: __dirname + '/public',
-    filename: 'index.js',
+    path: `${__dirname}/public`,
+    filename: 'index.js'
   }
 };

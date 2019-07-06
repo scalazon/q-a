@@ -9,7 +9,7 @@ const port = PORT || 3001;
 const host = HOST || '0.0.0.0';
 
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname, '../public')));
+app.use('/', express.static(path.join(__dirname, '../public')));
 
 app.listen(port, host, () => {
   console.log(`Serving it up at: http://${host}:${port}`);
