@@ -1,9 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
 
+const SRC_DIR = path.join(__dirname, '/client');
+const PUB_DIR = path.join(__dirname, '/public');
+
 module.exports = {
   mode: 'development',
-  context: `${__dirname}/client`,
+  context: SRC_DIR,
   entry: './index.js',
   watch: true,
   module: {
@@ -19,7 +22,7 @@ module.exports = {
     ]
   },
   output: {
-    path: `${__dirname}/public`,
+    path: PUB_DIR,
     filename: 'bundle.js'
   }
 };
