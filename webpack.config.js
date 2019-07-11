@@ -1,9 +1,11 @@
-const webpack = require('webpack');
 const path = require('path');
 
+const SRC_DIR = path.join(__dirname, '/client');
+const PUB_DIR = path.join(__dirname, '/public');
+
 module.exports = {
-  mode: "development",
-  context: __dirname + '/client',
+  mode: 'development',
+  context: SRC_DIR,
   entry: './index.js',
   watch: true,
   module: {
@@ -14,12 +16,12 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: ['@babel/preset-react', '@babel/preset-env']
-        },
-      },
-    ],
+        }
+      }
+    ]
   },
   output: {
-    path: __dirname + '/public',
-    filename: 'index.js',
+    path: PUB_DIR,
+    filename: 'bundle.js'
   }
 };
