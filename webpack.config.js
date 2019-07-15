@@ -22,6 +22,6 @@ module.exports = {
   },
   output: {
     path: PUB_DIR,
-    filename: 'q-a.js'
+    filename: 'q-a_bundle.js'
   }
 };
