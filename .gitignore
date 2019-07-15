@@ -2,6 +2,7 @@ node_modules/
 package-lock.json
 .env
 .prettierrrc.json
+config.js
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
