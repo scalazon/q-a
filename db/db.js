@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 const { MONGO_USER, MONGO_PASSWORD } = require('../config');
-// does this look different?
+
 const uri = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@hackmazon-qu1yo.mongodb.net/hackmazon?retryWrites=true&w=majority`;
 const options = {
   useNewUrlParser: true
