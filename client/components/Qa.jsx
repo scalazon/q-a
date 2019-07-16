@@ -1,5 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
+import SuggestionBar from './SuggestBar.jsx';
 
 export default class Qa extends React.Component {
   constructor(props) {
@@ -56,7 +57,7 @@ export default class Qa extends React.Component {
     } else{
       this.setState({ askCommunity: false})
     }
-    console.log(e.target.value);
+    // console.log(e.target.value);
   }
 
 
@@ -66,12 +67,12 @@ export default class Qa extends React.Component {
     return (
         <div>
         <div>
-          <div>Have a Question?</div>
+          <span>Have a Question?</span>
           <div>Find answers in product info, Q&As, reviews</div>
           <input type="text" className="input" placeholder="Search..." onChange={this.tester.bind(this)}/>
         </div>
         <div>{this.state.askCommunity ? 
-          <div><span>Don't see what you're looking for?</span><button>Ask Community?</button></div>
+          <div><span>Don't see what you're looking for?</span><button>Ask Community?</button><div><SuggestionBar/></div></div>
           :
           <div></div>
           }</div>
