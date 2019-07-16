@@ -19,6 +19,7 @@ app.use(bodyParser.json({ strict: false }));
 app.get('/', (req, res) => {
   res.send('Connected to DB Seeding Server');
 });
+app.post('/seeding', (req, res) => {});
 
 app.post('/loadBulkData', (req, res) => {
   const productData = req.body;
