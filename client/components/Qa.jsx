@@ -5,9 +5,11 @@ export default class Qa extends React.Component {
     super(props);
 
     this.state = {
-      satisfied: 'Can I use it on multiple daddies?',
-      unhappy: 'Can I speak to your manager?'
     };
+  }
+  
+  componentDidMount() {
+
   }
 
   render() {
