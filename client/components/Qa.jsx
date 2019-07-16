@@ -51,9 +51,10 @@ export default class Qa extends React.Component {
 
 
   tester(e) {
-    e.preventDefault();
     if (e.target.value) {
       this.setState({ askCommunity: true})
+    } else{
+      this.setState({ askCommunity: false})
     }
     console.log(e.target.value);
   }
