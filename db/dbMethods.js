@@ -9,7 +9,5 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model('Product', productSchema);
 
-module.exports.getAll = () =>
-  Product.find()
-    .then(stuff => console.log(stuff))
-    .catch(console.error);
+module.exports.getAll = () => Product.find().catch(console.error);
+module.exports.getOne = asin => Product.findOne({ asin }).catch(console.error);
