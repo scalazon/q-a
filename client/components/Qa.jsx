@@ -10,6 +10,7 @@ export default class Qa extends React.Component {
       showInfo: false,
       showReviews: false,
       showQuestions: false,
+      showAsked: false,
       items: [],
       alsoAsked: ['Is this a Daddle?', 'Can I use it on people AND animals?', 'WowWowowWowOwoWOwowowOW?', 'What is this?']
     };
@@ -57,14 +58,23 @@ export default class Qa extends React.Component {
     if (e.target.value) {
       this.setState({ askCommunity: true})
     } else{
-      this.setState({ askCommunity: false, showQuestions: false})
+      this.setState({ askCommunity: false, showQuestions: false, showInfo: false, showReviews: false, showAsked: false})
     }
     // console.log(e.target.value);
   }
 
   handleClick(e) {
     if (e === 'Customer Q&A') {
-      this.setState({showQuestions: true})
+      this.setState({showQuestions: true, showInfo: false, showReviews: false, showAsked: false})
+    }
+    if (e === 'Customer Reviews') {
+      this.setState({showReviews: true, showQuestions: false, showInfo: false, showAsked: false})
+    }
+    if (e === 'Product Info') {
+      this.setState({showInfo: true, showQuestions: false, showReviews: false, showAsked: false})
+    }
+    if (e === 'All') {
+      this.setState({showQuestions: true, showReviews: true, showInfo: true, showAsked: true})
     };
   }
 
@@ -94,8 +104,23 @@ export default class Qa extends React.Component {
         }
         </div>
           <div>
+          {this.state.showInfo ?
+          <div>PRODUCT INFO MOFUCKA, DO YOU HAVE IT?</div>
+          : 
+          <div></div>
+          }
           {this.state.showQuestions ?
           <div>HUR DUR QUESTION PARTY</div>
+          : 
+          <div></div>
+          }
+          {this.state.showReviews ?
+          <div>This is Review Town</div>
+          : 
+          <div></div>
+          }
+          {this.state.showAsked ?
+          <div>Other Dummies Asked This Stuff</div>
           : 
           <div></div>
           }
