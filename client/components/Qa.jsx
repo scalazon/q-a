@@ -7,7 +7,9 @@ export default class Qa extends React.Component {
 
     this.state = {
       askCommunity: false,
-      showDrop: '',
+      showInfo: false,
+      showReviews: false,
+      showQuestions: false,
       items: [],
       alsoAsked: ['Is this a Daddle?', 'Can I use it on people AND animals?', 'WowWowowWowOwoWOwowowOW?', 'What is this?']
     };
@@ -55,13 +57,15 @@ export default class Qa extends React.Component {
     if (e.target.value) {
       this.setState({ askCommunity: true})
     } else{
-      this.setState({ askCommunity: false, showDrop: ''})
+      this.setState({ askCommunity: false, showQuestions: false})
     }
     // console.log(e.target.value);
   }
 
   handleClick(e) {
-    console.log(e);
+    if (e === 'Customer Q&A') {
+      this.setState({showQuestions: true})
+    };
   }
 
 
@@ -73,7 +77,8 @@ export default class Qa extends React.Component {
           <div>Find answers in product info, Q&As, reviews</div>
           <input type="text" className="input" placeholder="Ask Away" onChange={this.tester.bind(this)}/>
         </div>
-        <div>{this.state.askCommunity ? 
+        <div>
+        {this.state.askCommunity ? 
           <div>
             <span>Don't see what you're looking for?</span>
             <button>Ask Community?</button>
@@ -86,7 +91,15 @@ export default class Qa extends React.Component {
           </div>
           :
           <div></div>
-          }</div>
+        }
+        </div>
+          <div>
+          {this.state.showQuestions ?
+          <div>HUR DUR QUESTION PARTY</div>
+          : 
+          <div></div>
+          }
+          </div>
         </div>
     );
   }
