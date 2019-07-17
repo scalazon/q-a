@@ -9,6 +9,7 @@ Right now, these methods are:
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const axios = require('axios');
 
 const app = express();
 const { dataLoader, deleteAllProducts } = require('../db/db');
@@ -18,6 +19,7 @@ app.use(bodyParser.json({ strict: false }));
 app.get('/', (req, res) => {
   res.send('Connected to DB Seeding Server');
 });
+app.post('/seeding', (req, res) => {});
 
 app.post('/loadBulkData', (req, res) => {
   const productData = req.body;
@@ -42,5 +44,5 @@ const port = PORT || 3030;
 const host = HOST || '0.0.0.0';
 
 app.listen(port, host, () => {
-  console.log(`DB Seed Server server running http://${host}:${port}`);
+  console.log(`DB Seed Server running http://${host}:${port}`);
 });

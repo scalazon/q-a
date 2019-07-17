@@ -1,6 +1,7 @@
 const { MongoClient } = require('mongodb');
+const axios = require('axios');
 const { MONGO_USER, MONGO_PASSWORD } = require('../config');
-// does this look different?
+
 const uri = `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@hackmazon-qu1yo.mongodb.net/hackmazon?retryWrites=true&w=majority`;
 const options = {
   useNewUrlParser: true
@@ -27,19 +28,29 @@ function getAll() {
 function dataLoader(JSONarray) {
   const dbName = 'hackmazon';
   const collectionName = 'products';
-  return MongoClient.connect(uri, options)
-    .then(connection => {
-      return connection
-        .db(dbName)
-        .collection(collectionName)
-        .insertMany(JSONarray);
-    })
-    .then(result => {
-      return result;
-    })
-    .catch(err => {
-      console.log('Error in data loader', err);
-    });
+  Promise.all(
+    JSONarray.map(obj =>
+      Promise.all([
+        axios.get('https://loripsum.net/api/1/short/plaintext'),
+        axios.get('https://loripsum.net/api/1/long/plaintext')
+      ]).then(questAns => ({
+        asin: obj.asin,
+        question: questAns[0].data,
+        answer: questAns[1].data
+      }))
+    )
+  ).then(res => {
+    return MongoClient.connect(uri, options)
+      .then(connection => {
+        return connection
+          .db(dbName)
+          .collection(collectionName)
+          .insertMany(res);
+      })
+      .catch(err => {
+        console.log('Error in data loader', err);
+      });
+  });
 }
 
 function deleteAllProducts() {
