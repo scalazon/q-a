@@ -6,7 +6,8 @@
     "test": "jest",
     "build": "webpack",
     "start": "node ./server/server.js",
-    "dev-server": "nodemon -r dotenv/config server/server.js"
+    "dev-server": "nodemon -r dotenv/config server/server.js",
+    "start-db": "nodemon -r dotenv/config db/mongoose.js"
   },
   "keywords": [],
   "author": "",
