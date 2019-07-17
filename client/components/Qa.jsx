@@ -1,6 +1,5 @@
 import React from 'react';
 import Axios from 'axios';
-import SuggestionBar from './SuggestBar.jsx';
 
 export default class Qa extends React.Component {
   constructor(props) {
@@ -8,6 +7,7 @@ export default class Qa extends React.Component {
 
     this.state = {
       askCommunity: false,
+      showDrop: '',
       items: [],
       alsoAsked: ['Is this a Daddle?', 'Can I use it on people AND animals?', 'WowWowowWowOwoWOwowowOW?', 'What is this?']
     };
@@ -55,12 +55,14 @@ export default class Qa extends React.Component {
     if (e.target.value) {
       this.setState({ askCommunity: true})
     } else{
-      this.setState({ askCommunity: false})
+      this.setState({ askCommunity: false, showDrop: ''})
     }
     // console.log(e.target.value);
   }
 
-
+  handleClick(e) {
+    console.log(e);
+  }
 
 
   render() {
@@ -69,10 +71,19 @@ export default class Qa extends React.Component {
         <div>
           <span>Have a Question?</span>
           <div>Find answers in product info, Q&As, reviews</div>
-          <input type="text" className="input" placeholder="Search..." onChange={this.tester.bind(this)}/>
+          <input type="text" className="input" placeholder="Ask Away" onChange={this.tester.bind(this)}/>
         </div>
         <div>{this.state.askCommunity ? 
-          <div><span>Don't see what you're looking for?</span><button>Ask Community?</button><div><SuggestionBar/></div></div>
+          <div>
+            <span>Don't see what you're looking for?</span>
+            <button>Ask Community?</button>
+            <div className='Sbar'> 
+              <button onClick={this.handleClick.bind(this, 'All')} key ='All'>All</button>
+              <button onClick={this.handleClick.bind(this, 'Product Info')} key='Product Info'>Product Information</button>
+              <button onClick={this.handleClick.bind(this, 'Customer Q&A')} key='Customer Q&A'>Customer Q&A's</button>
+              <button onClick={this.handleClick.bind(this, 'Customer Reviews')} key='Customer Reviews'>Customer Reviews</button>
+            </div>
+          </div>
           :
           <div></div>
           }</div>
