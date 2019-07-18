@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components'
 import Axios from 'axios';
 
 export default class Qa extends React.Component {
@@ -13,14 +14,14 @@ export default class Qa extends React.Component {
       showAsked: false,
       currentItem: '',
       items: [],
-      alsoAsked: ['Is this a Daddle?', 'Can I use it on people AND animals?', 'WowWowowWowOwoWOwowowOW?', 'What is this?']
+      alsoAsked: ['Is this a Daddle?', 'Anything is a daddle with the right attitude!', 'Can I use it on people AND animals?', 'Of course you can!', 'WowWowowWowOwoWOwowowOW?', 'We agree!', 'What is this?', 'Buy it and find out!']
     };
   }
   
   componentDidMount() {
     Axios.get('/everything').then((res) => this.setState({items: res.data}))
     const bc = new BroadcastChannel('product-change');
-    bc.onmessage = (ev) => { this.setState({currentItem: ev.data}); } //replace with your handler
+    bc.onmessage = (ev) => { this.setState({currentItem: ev.data}); }
   }
 
   handleChange(e) {
@@ -56,6 +57,14 @@ export default class Qa extends React.Component {
     });
   }
 
+  showCommon() {
+    return (<div>
+    {this.state.showAsked.map((question, index) => (
+        <p>{question}</p>
+    ))}
+    </div>)
+  }
+
   //when the input field is populated we need to display askCommunity button
   askQ(e) {
     if (e.target.value) {
@@ -81,10 +90,10 @@ export default class Qa extends React.Component {
     };
   }
 
-
   render() {
     return (
         <div>
+        <hr></hr>
         <div>
           <span>Have a Question?</span>
           <div>Find answers in product info, Q&As, reviews</div>
@@ -100,6 +109,8 @@ export default class Qa extends React.Component {
               <button onClick={this.handleClick.bind(this, 'Product Info')} key='Product Info'>Product Information</button>
               <button onClick={this.handleClick.bind(this, 'Customer Q&A')} key='Customer Q&A'>Customer Q&A's</button>
               <button onClick={this.handleClick.bind(this, 'Customer Reviews')} key='Customer Reviews'>Customer Reviews</button>
+              <div>Customer's also Asked</div>
+              <div></div>
             </div>
           </div>
           :
@@ -111,23 +122,24 @@ export default class Qa extends React.Component {
           <div>PRODUCT INFO MOFUCKA, DO YOU HAVE IT?</div>
           : 
           <div></div>
-          }
+        }
           {this.state.showQuestions ?
           <div>HUR DUR QUESTION PARTY</div>
           : 
           <div></div>
-          }
+        }
           {this.state.showReviews ?
           <div>This is Review Town</div>
           : 
           <div></div>
-          }
+        }
           {this.state.showAsked ?
           <div>Other Dummies Asked This Stuff</div>
           : 
           <div></div>
-          }
+        }
           </div>
+          <hr></hr>
         </div>
     );
   }
