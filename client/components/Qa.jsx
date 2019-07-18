@@ -4,7 +4,7 @@ import Axios from 'axios';
 export default class Qa extends React.Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       askCommunity: false,
       showInfo: false,
@@ -20,7 +20,7 @@ export default class Qa extends React.Component {
   componentDidMount() {
     Axios.get('/everything').then((res) => this.setState({items: res.data}))
     const bc = new BroadcastChannel('product-change');
-    bc.onmessage = function (ev) { console.log('Changing the product to ' + ev.data + ', boss!'); } //replace with your handler
+    bc.onmessage = (ev) => { this.setState({currentItem: ev.data}); } //replace with your handler
   }
 
   handleChange(e) {
