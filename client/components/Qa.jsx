@@ -11,14 +11,17 @@ export default class Qa extends React.Component {
       showReviews: false,
       showQuestions: false,
       showAsked: false,
+      currentItem: '',
       items: [],
       alsoAsked: ['Is this a Daddle?', 'Can I use it on people AND animals?', 'WowWowowWowOwoWOwowowOW?', 'What is this?']
     };
   }
   
-  // componentDidMount() {
-  //   Axios.get()
-  // }
+  componentDidMount() {
+    Axios.get('/everything').then((res) => this.setState({items: res.data}))
+    const bc = new BroadcastChannel('product-change');
+    bc.onmessage = function (ev) { console.log('Changing the product to ' + ev.data + ', boss!'); } //replace with your handler
+  }
 
   handleChange(e) {
     // Variable to hold the original version of the list
@@ -53,8 +56,8 @@ export default class Qa extends React.Component {
     });
   }
 
-
-  tester(e) {
+  //when the input field is populated we need to display askCommunity button
+  askQ(e) {
     if (e.target.value) {
       this.setState({ askCommunity: true})
     } else{
@@ -85,7 +88,7 @@ export default class Qa extends React.Component {
         <div>
           <span>Have a Question?</span>
           <div>Find answers in product info, Q&As, reviews</div>
-          <input type="text" className="input" placeholder="Ask Away" onChange={this.tester.bind(this)}/>
+          <input type="text" className="input" placeholder="Ask Away" onChange={this.askQ.bind(this)}/>
         </div>
         <div>
         {this.state.askCommunity ? 
