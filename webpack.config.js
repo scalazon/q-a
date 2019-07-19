@@ -1,24 +1,31 @@
-const webpack = require('webpack');
 const path = require('path');
 
+const SRC_DIR = path.join(__dirname, '/client');
+const PUB_DIR = path.join(__dirname, '/public');
+
 module.exports = {
-  context: __dirname + '/client',
+  mode: 'development',
+  context: SRC_DIR,
   entry: './index.js',
   watch: true,
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015', 'env']
-        },
+          presets: ['@babel/preset-react', '@babel/preset-env']
+        }
       },
-    ],
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
+      }
+    ]
   },
   output: {
-    path: __dirname + '/public',
-    filename: 'index.js',
+    path: PUB_DIR,
+    filename: 'q-a_bundle.js'
   }
 };
