@@ -1,24 +1,33 @@
 import React from 'react';
 import Axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
+import Qbar from './Qbar.jsx';
+import ProductInfo from './ProductInfo.jsx';
+
+//save
 
 export default class Qa extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       askCommunity: false,
       showInfo: false,
       showReviews: false,
       showQuestions: false,
       showAsked: false,
+      currentItem: '',
       items: [],
-      alsoAsked: ['Is this a Daddle?', 'Can I use it on people AND animals?', 'WowWowowWowOwoWOwowowOW?', 'What is this?']
+      alsoAsked: ['Is this a Daddle?', 'Anything is a daddle with the right attitude!', 'Can I use it on people AND animals?', 'Of course you can!', 'WowWowowWowOwoWOwowowOW?', 'We agree!', 'What is this?', 'Buy it and find out!']
     };
   }
   
-  // componentDidMount() {
-  //   Axios.get()
-  // }
+  componentDidMount() {
+    Axios.get('/everything').then((res) => this.setState({items: res.data}))
+    const bc = new BroadcastChannel('product-change');
+    bc.onmessage = (ev) => { this.setState({currentItem: ev.data}); }
+  }
 
   handleChange(e) {
     // Variable to hold the original version of the list
@@ -53,8 +62,16 @@ export default class Qa extends React.Component {
     });
   }
 
+  showCommon() {
+    return (<div>
+    {this.state.showAsked.map((question, index) => (
+        <p>{question}</p>
+    ))}
+    </div>)
+  }
 
-  tester(e) {
+  //when the input field is populated we need to display askCommunity button
+  askQ(e) {
     if (e.target.value) {
       this.setState({ askCommunity: true})
     } else{
@@ -78,53 +95,50 @@ export default class Qa extends React.Component {
     };
   }
 
-
   render() {
     return (
         <div>
+        <hr></hr>
         <div>
           <span>Have a Question?</span>
           <div>Find answers in product info, Q&As, reviews</div>
-          <input type="text" className="input" placeholder="Ask Away" onChange={this.tester.bind(this)}/>
+          <Form inline>
+      <FormControl type="text" placeholder="" className="input" onChange={this.askQ.bind(this)}/></Form>
         </div>
         <div>
         {this.state.askCommunity ? 
           <div>
             <span>Don't see what you're looking for?</span>
-            <button>Ask Community?</button>
-            <div className='Sbar'> 
-              <button onClick={this.handleClick.bind(this, 'All')} key ='All'>All</button>
-              <button onClick={this.handleClick.bind(this, 'Product Info')} key='Product Info'>Product Information</button>
-              <button onClick={this.handleClick.bind(this, 'Customer Q&A')} key='Customer Q&A'>Customer Q&A's</button>
-              <button onClick={this.handleClick.bind(this, 'Customer Reviews')} key='Customer Reviews'>Customer Reviews</button>
+            <Button>Ask Community?</Button>
+            <><Qbar handleClick={this.handleClick.bind(this)} items={this.state.items}/></>
             </div>
-          </div>
           :
           <div></div>
         }
         </div>
           <div>
           {this.state.showInfo ?
-          <div>PRODUCT INFO MOFUCKA, DO YOU HAVE IT?</div>
+          <div><ProductInfo items={this.state.items} /></div>
           : 
           <div></div>
-          }
+        }
           {this.state.showQuestions ?
-          <div>HUR DUR QUESTION PARTY</div>
+          <div>question and answers</div>
           : 
           <div></div>
-          }
+        }
           {this.state.showReviews ?
-          <div>This is Review Town</div>
+          <div>maybe reviews?</div>
           : 
           <div></div>
-          }
+        }
           {this.state.showAsked ?
           <div>Other Dummies Asked This Stuff</div>
           : 
           <div></div>
-          }
+        }
           </div>
+          <hr></hr>
         </div>
     );
   }
