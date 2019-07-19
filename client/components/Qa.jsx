@@ -107,15 +107,9 @@ export default class Qa extends React.Component {
         {this.state.askCommunity ? 
           <div>
             <span>Don't see what you're looking for?</span>
-            <button>Ask Community?</button>
+            <Button>Ask Community?</Button>
             <><Qbar handleClick={this.handleClick.bind(this)}/></>
-            <div className='Sbar'> 
-              <button onClick={this.handleClick.bind(this, 'All')} key ='All'>All</button>
-              <button onClick={this.handleClick.bind(this, 'Product Info')} key='Product Info'>Product Information</button>
-              <button onClick={this.handleClick.bind(this, 'Customer Q&A')} key='Customer Q&A'>Customer Q&A's</button>
-              <button onClick={this.handleClick.bind(this, 'Customer Reviews')} key='Customer Reviews'>Customer Reviews</button>
             </div>
-          </div>
           :
           <div></div>
         }
