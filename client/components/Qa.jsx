@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import Axios from 'axios';
 
+
 export default class Qa extends React.Component {
   constructor(props) {
     super(props);
@@ -109,7 +110,6 @@ export default class Qa extends React.Component {
               <button onClick={this.handleClick.bind(this, 'Product Info')} key='Product Info'>Product Information</button>
               <button onClick={this.handleClick.bind(this, 'Customer Q&A')} key='Customer Q&A'>Customer Q&A's</button>
               <button onClick={this.handleClick.bind(this, 'Customer Reviews')} key='Customer Reviews'>Customer Reviews</button>
-              <div>Customer's also Asked</div>
               <div></div>
             </div>
           </div>
