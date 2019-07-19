@@ -1,12 +1,15 @@
 import React from 'react';
-import styled from 'styled-components'
 import Axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
+import Qbar from './Qbar.jsx';
 
+//save
 
 export default class Qa extends React.Component {
   constructor(props) {
     super(props);
-    
     this.state = {
       askCommunity: false,
       showInfo: false,
@@ -105,12 +108,12 @@ export default class Qa extends React.Component {
           <div>
             <span>Don't see what you're looking for?</span>
             <button>Ask Community?</button>
+            <><Qbar handleClick={this.handleClick.bind(this)}/></>
             <div className='Sbar'> 
               <button onClick={this.handleClick.bind(this, 'All')} key ='All'>All</button>
               <button onClick={this.handleClick.bind(this, 'Product Info')} key='Product Info'>Product Information</button>
               <button onClick={this.handleClick.bind(this, 'Customer Q&A')} key='Customer Q&A'>Customer Q&A's</button>
               <button onClick={this.handleClick.bind(this, 'Customer Reviews')} key='Customer Reviews'>Customer Reviews</button>
-              <div></div>
             </div>
           </div>
           :
