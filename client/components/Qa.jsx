@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Qbar from './Qbar.jsx';
+import ProductInfo from './ProductInfo.jsx';
 
 //save
 
@@ -101,14 +102,15 @@ export default class Qa extends React.Component {
         <div>
           <span>Have a Question?</span>
           <div>Find answers in product info, Q&As, reviews</div>
-          <input type="text" className="input" placeholder="Ask Away" onChange={this.askQ.bind(this)}/>
+          <Form inline>
+      <FormControl type="text" placeholder="" className="input" onChange={this.askQ.bind(this)}/></Form>
         </div>
         <div>
         {this.state.askCommunity ? 
           <div>
             <span>Don't see what you're looking for?</span>
             <Button>Ask Community?</Button>
-            <><Qbar handleClick={this.handleClick.bind(this)}/></>
+            <><Qbar handleClick={this.handleClick.bind(this)} items={this.state.items}/></>
             </div>
           :
           <div></div>
@@ -116,17 +118,17 @@ export default class Qa extends React.Component {
         </div>
           <div>
           {this.state.showInfo ?
-          <div>PRODUCT INFO MOFUCKA, DO YOU HAVE IT?</div>
+          <div><ProductInfo items={this.state.items} /></div>
           : 
           <div></div>
         }
           {this.state.showQuestions ?
-          <div>HUR DUR QUESTION PARTY</div>
+          <div>question and answers</div>
           : 
           <div></div>
         }
           {this.state.showReviews ?
-          <div>This is Review Town</div>
+          <div>maybe reviews?</div>
           : 
           <div></div>
         }
