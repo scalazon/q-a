@@ -100,17 +100,17 @@ export default class Qa extends React.Component {
         <div>
         <hr></hr>
         <div>
-          <span className="bold">Have a Question?</span>
+          <span className="bold">Have a question?</span>
           <div className="light">Find answers in product info, Q&As, reviews</div>
-          <Form inline>
-      <FormControl type="text" placeholder="" className="input" onChange={this.askQ.bind(this)}/></Form>
+          <Form className="formContainer" inline>
+      <FormControl type="text" placeholder=""  className="input" onChange={this.askQ.bind(this)}/></Form>
         </div>
         <div>
         {this.state.askCommunity ? 
           <div>
             <span className="grey">Don't see what you're looking for?</span>
             <Button className="community">Ask the community</Button>
-            <><Qbar className="input" handleClick={this.handleClick.bind(this)} items={this.state.items}/></>
+            <><Qbar handleClick={this.handleClick.bind(this)} items={this.state.items}/></>
             </div>
           :
           <div></div>
@@ -138,7 +138,6 @@ export default class Qa extends React.Component {
           <div></div>
         }
           </div>
-          <hr></hr>
         </div>
     );
   }
