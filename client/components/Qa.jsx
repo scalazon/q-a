@@ -24,7 +24,7 @@ export default class Qa extends React.Component {
   }
   
   componentDidMount() {
-    Axios.get('/everything').then((res) => this.setState({items: res.data}))
+    Axios.get('http://q-a-env.brpmxghy9w.us-east-1.elasticbeanstalk.com/everything').then((res) => this.setState({items: res.data})).catch(err => console.error(err));
     const bc = new BroadcastChannel('product-change');
     bc.onmessage = (ev) => { this.setState({currentItem: ev.data}); }
   }
