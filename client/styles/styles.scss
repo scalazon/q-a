@@ -77,13 +77,13 @@ $amazon-grey: #e8e8e8;
   box-shadow: 0px 0px 0px 2px $amazon-yellow !important;
   border-color: #8D9096;
 }
-
-#tab {
+.tabs {
   background-color: transparent !important;
   border: 1px transparent !important;
   outline: none;
 }
-#tab:focus {
+
+#tab {
   background-color: transparent !important;
   border: 1px transparent !important;
   outline: none;
@@ -91,4 +91,12 @@ $amazon-grey: #e8e8e8;
 
 .tabs:focus {
   border: 0px transparent !important;
+  border: 1px transparent !important;
+  outline: none;
+}
+
+.tabs:hover {
+  border: 0px transparent !important;
+  border: 1px transparent !important;
+  outline: none;
 }
