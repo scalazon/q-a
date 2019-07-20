@@ -21,6 +21,31 @@ $ember-lite: AmazonEmberLite, EmberLt, sans-serif;
 $amazon-yellow: #ff9900;
 $amazon-grey: #e8e8e8;
 
-body {
-  font: $ember-font
+.bold {
+  font-family: $ember-bold;
+  padding-left: 10px;
+}
+
+.light {
+  font-family: $ember-lite;
+  padding-left: 10px;
+}
+
+.grey {
+  font: 80% $ember-font;
+  font-weight: 700;
+  color: #767676;
+  padding-right: 20px;
+  padding-left: 10px;
+}
+
+.community {
+  font: 80% $ember-font;
+  color: #111;
+  background: #e7e9ec;
+}
+
+.input {
+  font: 100% $ember-font;
+  padding-left: 10px;
 }

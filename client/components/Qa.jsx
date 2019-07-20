@@ -100,17 +100,17 @@ export default class Qa extends React.Component {
         <div>
         <hr></hr>
         <div>
-          <span>Have a Question?</span>
-          <div>Find answers in product info, Q&As, reviews</div>
+          <span className="bold">Have a Question?</span>
+          <div className="light">Find answers in product info, Q&As, reviews</div>
           <Form inline>
       <FormControl type="text" placeholder="" className="input" onChange={this.askQ.bind(this)}/></Form>
         </div>
         <div>
         {this.state.askCommunity ? 
           <div>
-            <span>Don't see what you're looking for?</span>
-            <Button>Ask Community?</Button>
-            <><Qbar handleClick={this.handleClick.bind(this)} items={this.state.items}/></>
+            <span className="grey">Don't see what you're looking for?</span>
+            <Button className="community">Ask the community</Button>
+            <><Qbar className="input" handleClick={this.handleClick.bind(this)} items={this.state.items}/></>
             </div>
           :
           <div></div>
