@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'AmazonEmber';
+  src: url('./fonts/AmazonEmber_Rg.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'AmazonEmberBold';
+  src: url('./fonts/AmazonEmber_Bd.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'AmazonEmberLite';
+  src: url('./fonts/AmazonEmber_Lt.ttf') format('truetype');
+}
+
+$ember-font: AmazonEmber, EmberRg, sans-serif;
+
+$ember-bold: AmazonEmberBold, EmberBd, sans-serif;
+
+$ember-lite: AmazonEmberLite, EmberLt, sans-serif;
+
+$amazon-yellow: #ff9900;
+$amazon-grey: #e8e8e8;
