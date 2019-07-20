@@ -26,7 +26,7 @@ app.get('/everything', cors(), (req, res) => {
     .then(all => res.send(all))
     .catch(err => {
       console.error(err);
-      res.send();
+      res.send(err);
     });
 });
 
