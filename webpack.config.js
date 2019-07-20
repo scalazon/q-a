@@ -4,7 +4,6 @@ const SRC_DIR = path.join(__dirname, '/client');
 const PUB_DIR = path.join(__dirname, '/public');
 
 module.exports = {
-  mode: 'development',
   context: SRC_DIR,
   entry: './index.js',
   watch: true,
