@@ -30,9 +30,12 @@ $amazon-grey: #e8e8e8;
 }
 
 .light {
-  font: 12px $ember-lite;
+  font: 12px $ember-font;
+  color: #555;
+  padding-top: 4px;
   padding-left: 15px;
   margin-bottom: 10px;
+
 }
 
 .grey {
@@ -52,10 +55,11 @@ $amazon-grey: #e8e8e8;
 .formContainer {
   font: 100% $ember-font;
   padding-left: 15px;
-  width: 80% !important;
-
+  width: 100% !important;
+  height: 31px !important;
 }
 
 .input {
   width: 100% !important;
+  height: 31px !important;
 }
