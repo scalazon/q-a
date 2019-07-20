@@ -85,19 +85,12 @@ $amazon-grey: #e8e8e8;
   color: black;
 }
 
-.tabs ul > li.active > a,
-.tabs ul > li.active > a:hover,
-.tabs ul > li.active > a:focus {
+.tabs a,
+.tabs a:hover,
+.tabs a:focus {
   background-color: transparent !important;
   border: 1px transparent !important;
   outline: none;
   font: 100% $ember-font;
-  color: black;
-}
-
-a{
-  color: black;
-}
-a:hover{
   color: black;
 }
