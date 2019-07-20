@@ -21,7 +21,13 @@ app.use(
 );
 
 app.get('/everything', cors(), (req, res) => {
-  mongo.getAll().then(all => res.send(all));
+  mongo
+    .getAll()
+    .then(all => res.send(all))
+    .catch(err => {
+      console.error(err);
+      res.send();
+    });
 });
 
 app.get('/one', (req, res) => {
