@@ -4,7 +4,6 @@ const SRC_DIR = path.join(__dirname, '/client');
 const PUB_DIR = path.join(__dirname, '/public');
 
 module.exports = {
-  mode: 'development',
   context: SRC_DIR,
   entry: './index.js',
   watch: true,
@@ -21,6 +20,26 @@ module.exports = {
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(sass|scss)$/,
+        use: [
+          'style-loader', // creates style nodes from JS strings
+          'css-loader', // translates CSS into CommonJS
+          'sass-loader' // compiles Sass to CSS, using Node Sass by default
+        ]
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/'
+            }
+          }
+        ]
       }
     ]
   },

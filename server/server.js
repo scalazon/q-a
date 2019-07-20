@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const mongo = require(path.resolve(__dirname, '../db/dbMethods.js'));
 const app = express();
@@ -19,8 +20,14 @@ app.use(
   })
 );
 
-app.get('/everything', (req, res) => {
-  mongo.getAll().then(all => res.send(all));
+app.get('/everything', cors(), (req, res) => {
+  mongo
+    .getAll()
+    .then(all => res.send(all))
+    .catch(err => {
+      console.error(err);
+      res.send(err);
+    });
 });
 
 app.get('/one', (req, res) => {

@@ -24,7 +24,7 @@ export default class Qa extends React.Component {
   }
   
   componentDidMount() {
-    Axios.get('/everything').then((res) => this.setState({items: res.data}))
+    Axios.get('http://q-a-env.brpmxghy9w.us-east-1.elasticbeanstalk.com/everything').then((res) => this.setState({items: res.data})).catch(err => console.error(err));
     const bc = new BroadcastChannel('product-change');
     bc.onmessage = (ev) => { this.setState({currentItem: ev.data}); }
   }
@@ -100,16 +100,16 @@ export default class Qa extends React.Component {
         <div>
         <hr></hr>
         <div>
-          <span>Have a Question?</span>
-          <div>Find answers in product info, Q&As, reviews</div>
-          <Form inline>
-      <FormControl type="text" placeholder="" className="input" onChange={this.askQ.bind(this)}/></Form>
+          <span className="bold">Have a question?</span>
+          <div className="light">Find answers in product info, Q&As, reviews</div>
+          <Form className="formContainer" inline>
+      <FormControl type="text" placeholder=""  className="input" onChange={this.askQ.bind(this)}/></Form>
         </div>
         <div>
         {this.state.askCommunity ? 
           <div>
-            <span>Don't see what you're looking for?</span>
-            <Button>Ask Community?</Button>
+            <span className="grey">Don't see what you're looking for?</span>
+            <Button id="community">Ask the community</Button>
             <><Qbar handleClick={this.handleClick.bind(this)} items={this.state.items}/></>
             </div>
           :
@@ -138,7 +138,6 @@ export default class Qa extends React.Component {
           <div></div>
         }
           </div>
-          <hr></hr>
         </div>
     );
   }
