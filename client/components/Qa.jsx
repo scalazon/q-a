@@ -109,7 +109,7 @@ export default class Qa extends React.Component {
         {this.state.askCommunity ? 
           <div>
             <span className="grey">Don't see what you're looking for?</span>
-            <Button className="community">Ask the community</Button>
+            <Button id="community">Ask the community</Button>
             <><Qbar handleClick={this.handleClick.bind(this)} items={this.state.items}/></>
             </div>
           :

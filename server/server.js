@@ -19,11 +19,14 @@ app.use(
   })
 );
 
-app.get('/everything', (req, res) => {
-  mongo.getAll().then(all => res.send(all));
-});
+app.get(
+  'q-a-env.brpmxghy9w.us-east-1.elasticbeanstalk.com/everything',
+  (req, res) => {
+    mongo.getAll().then(all => res.send(all));
+  }
+);
 
-app.get('/one', (req, res) => {
+app.get('q-a-env.brpmxghy9w.us-east-1.elasticbeanstalk.com/one', (req, res) => {
   console.log(req.body);
   mongo.getOne(req.body.asin).then(one => {
     res.send({ question: one.question, answer: one.answer });
