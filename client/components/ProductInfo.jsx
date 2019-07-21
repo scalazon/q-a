@@ -1,8 +1,9 @@
 import React from 'react';
 
 function ProductInfo (props) {
+  let asin = props.currentItem;
   return (
-    <li>{props.items[0].question}</li>
+    <li>{props.items[asin].productInfo}</li>
   )
 }
 

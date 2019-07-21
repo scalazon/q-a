@@ -118,7 +118,7 @@ export default class Qa extends React.Component {
         </div>
           <div>
           {this.state.showInfo ?
-          <div><ProductInfo items={this.state.items} /></div>
+          <div><ProductInfo items={this.state.items} current={this.state.currentItem} /></div>
           : 
           <div></div>
         }
