@@ -18,6 +18,7 @@ export default class Qa extends React.Component {
       showQuestions: false,
       showAsked: false,
       currentItem: '',
+      currentProductInfo: '',
       items: [],
       alsoAsked: ['Is this a Daddle?', 'Anything is a daddle with the right attitude!', 'Can I use it on people AND animals?', 'Of course you can!', 'WowWowowWowOwoWOwowowOW?', 'We agree!', 'What is this?', 'Buy it and find out!']
     };
@@ -26,7 +27,10 @@ export default class Qa extends React.Component {
   componentDidMount() {
     Axios.get('http://q-a-env.brpmxghy9w.us-east-1.elasticbeanstalk.com/everything').then((res) => this.setState({items: res.data})).catch(err => console.error(err));
     const bc = new BroadcastChannel('product-change');
-    bc.onmessage = (ev) => { this.setState({currentItem: ev.data}); }
+    bc.onmessage = (ev) => { 
+      this.setState({currentItem: ev.data});
+      this.found();
+    }
   }
 
   handleChange(e) {
@@ -62,12 +66,15 @@ export default class Qa extends React.Component {
     });
   }
 
-  showCommon() {
-    return (<div>
-    {this.state.showAsked.map((question, index) => (
-        <p>{question}</p>
-    ))}
-    </div>)
+  found() {
+    let pInfo;
+    let list = this.state.items;
+    for (let i of list){
+      if (list[i][asin] === id) {
+        pInfo = list[i].productInfo;
+      }
+    }
+    this.setState({currentProductInfo: pInfo})
   }
 
   //when the input field is populated we need to display askCommunity button
@@ -118,7 +125,7 @@ export default class Qa extends React.Component {
         </div>
           <div>
           {this.state.showInfo ?
-          <div><ProductInfo items={this.state.items} current={this.state.currentItem} /></div>
+          <div><ProductInfo prodInfo={this.state.currentProductInfo} /></div>
           : 
           <div></div>
         }
