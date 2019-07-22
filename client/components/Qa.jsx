@@ -19,6 +19,8 @@ export default class Qa extends React.Component {
       showAsked: false,
       currentItem: '',
       currentProductInfo: '',
+      currentQ:'',
+      currentA:'',
       items: [],
       alsoAsked: ['Is this a Daddle?', 'Anything is a daddle with the right attitude!', 'Can I use it on people AND animals?', 'Of course you can!', 'WowWowowWowOwoWOwowowOW?', 'We agree!', 'What is this?', 'Buy it and find out!']
     };
@@ -28,8 +30,7 @@ export default class Qa extends React.Component {
     Axios.get('http://q-a-env.brpmxghy9w.us-east-1.elasticbeanstalk.com/everything').then((res) => this.setState({items: res.data})).catch(err => console.error(err));
     const bc = new BroadcastChannel('product-change');
     bc.onmessage = (ev) => { 
-      this.setState({currentItem: ev.data});
-      this.found();
+      return new Promise((resolve, reject) => this.setState({currentItem: ev.data})).then(this.found())
     }
   }
 
@@ -68,10 +69,14 @@ export default class Qa extends React.Component {
 
   found() {
     let pInfo;
+    let q;
+    let a;
     let list = this.state.items;
-    for (let i of list){
-      if (list[i]["asin"] === id) {
+    for (let i = 0; i < list.length; i++){
+      if (list[i].asin === this.state.currentItem) {
         pInfo = list[i].productInfo;
+        q = list[i].question;
+        a = list[i].answer;
       }
     }
     this.setState({currentProductInfo: pInfo})
