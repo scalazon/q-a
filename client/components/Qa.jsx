@@ -70,7 +70,7 @@ export default class Qa extends React.Component {
     let pInfo;
     let list = this.state.items;
     for (let i of list){
-      if (list[i][asin] === id) {
+      if (list[i]["asin"] === id) {
         pInfo = list[i].productInfo;
       }
     }
