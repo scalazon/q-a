@@ -79,7 +79,7 @@ export default class Qa extends React.Component {
         a = list[i].answer;
       }
     }
-    this.setState({currentProductInfo: pInfo})
+    this.setState({currentProductInfo: pInfo, currentA: a, currentQ: q})
   }
 
   //when the input field is populated we need to display askCommunity button
@@ -135,17 +135,22 @@ export default class Qa extends React.Component {
           <div></div>
         }
           {this.state.showQuestions ?
-          <div>question and answers</div>
+          <div>
+            <div>Q</div>
+            <div>{this.state.currentQ}</div>
+            <div>A</div>
+            <div>{this.state.currentA}</div>
+          </div>
           : 
           <div></div>
         }
           {this.state.showReviews ?
-          <div>maybe reviews?</div>
+          <div>Look Down</div>
           : 
           <div></div>
         }
           {this.state.showAsked ?
-          <div>Other Dummies Asked This Stuff</div>
+          <div>More fake Questions go here</div>
           : 
           <div></div>
         }
