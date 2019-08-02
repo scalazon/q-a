@@ -3,8 +3,10 @@ const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const mongoose = require('mongoose');
+const db = require('../sqlDB/sqlDb.js');
 
-const mongo = require(path.resolve(__dirname, '../db/dbMethods.js'));
+const mongo = require(path.resolve(__dirname, '../mongoDb/dbMethods.js'));
 const app = express();
 const { PORT, HOST } = require('../config.js');
 
@@ -31,11 +33,22 @@ app.get('/everything', cors(), (req, res) => {
 });
 
 app.get('/one', (req, res) => {
-  console.log(req.body);
-  mongo.getOne(req.body.asin).then(one => {
-    res.send({ question: one.question, answer: one.answer });
+  db.getSomeQuestions((err, data) => {
+    if (err) {
+      console.log('Error ', err);
+      res.end();
+    } else {
+      res.send(data);
+    }
   });
 });
+
+// app.get('/one', (req, res) => {
+//   console.log(req.body);
+//   mongo.getOne(req.body.asin).then(one => {
+//     res.send({ question: one.question, answer: one.answer });
+//   });
+// });
 
 app.listen(port, host, () => {
   console.log(`Serving it up at: http://${host}:${port}`);
